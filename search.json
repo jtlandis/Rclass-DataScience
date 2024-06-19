@@ -640,8 +640,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html",
+    "objectID": "examples/example-temperatures.html",
+    "href": "examples/example-temperatures.html",
     "title": "Example Analysis: Temperatures",
     "section": "",
     "text": "Preamble\nThis script will loosely follow the template document: it is more meant for you to get an idea of one way to approach the data processing and visualization! This analysis will primarily focus on using tidyverse tools (i.e. dplyr and ggplot).\nFor this dataset, the main skills we want you to practice are:\nThe research questions we will address are:",
@@ -651,8 +651,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#skill-parsing-strings",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#skill-parsing-strings",
+    "objectID": "examples/example-temperatures.html#skill-parsing-strings",
+    "href": "examples/example-temperatures.html#skill-parsing-strings",
     "title": "Example Analysis: Temperatures",
     "section": "Skill: Parsing strings",
     "text": "Skill: Parsing strings\nThere is useful information that is contained within the Subject.ID and period columns that would be nice to extract out. There are a few handy functions from the stringr package within the tidyverse that we can use.1 In particular, we will use str_sub() to tackle splitting the Subject.ID and str_split_fixed() to tackle the information contained within period.\nSubject.ID has no actual delimiters aside from the positions of the characters (neighborhood in the 1st, subject ID in the 2nd), so we’ll use str_sub(). This function needs to know which string we are working on and the start and end positions of where it should extract: since we only want one character, the start and end positions will be the same.\nIn contrast, period has 2 pieces of information (the day of the week and the hours) separated by the \", \" (comma-space). We will use str_split_fixed(), which needs to know the string we are working on, the separator, and how many pieces of information are separated by that separator pattern. Since this function returns an entire matrix, we will also specify which column of the matrix we want using our index operator ([,]).\n\ntemps &lt;- temps |&gt;\n  mutate(neighborhood = str_sub(Subject.ID, 1, 1),\n         id = str_sub(Subject.ID, 2, 2),\n         wkday = str_split_fixed(period, \", \", n = 2)[,1],\n         hrs = str_split_fixed(period, \", \", n = 2)[,2])",
@@ -662,8 +662,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#skill-working-with-na-values",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#skill-working-with-na-values",
+    "objectID": "examples/example-temperatures.html#skill-working-with-na-values",
+    "href": "examples/example-temperatures.html#skill-working-with-na-values",
     "title": "Example Analysis: Temperatures",
     "section": "Skill: Working with NA values",
     "text": "Skill: Working with NA values\nThere is nothing explicit we will do about NA values here for now – just keep them in mind and we will handle them later when we visualize!",
@@ -673,8 +673,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#easier",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#easier",
+    "objectID": "examples/example-temperatures.html#easier",
+    "href": "examples/example-temperatures.html#easier",
     "title": "Example Analysis: Temperatures",
     "section": "Easier",
     "text": "Easier\n\n\n\n\n\n\nResearch question\n\n\n\nHow many participants were there for each neighborhood in the study?\n\n\nThis question is “easier” to approach in the sense that there little additional data wrangling to do: we just need to summarize() the data. There is a helpful counting function from dplyr, n_distinct(), that we can use count the unique number of subject ids. Since we are looking at count data, we can use a bar graph.\n\n# count participants\nparticipants &lt;- temps |&gt;\n  group_by(neighborhood) |&gt;\n  summarize(count = n_distinct(id))\n\n# plot\nggplot(participants, aes(x = neighborhood, y = count)) +\n  geom_col() +\n  labs(title = \"Study participants per neighborhood\")\n\n\n\n\n\n\n\n\nLet’s add in the neighborhood names from the metadata to make this graph a little clearer. Since x-axis values are discrete values, we will use scale_x_discrete() and specify the labels argument, which will make R rename the current x-axis labels with whatever you provide to the argument.\nThere are two ways to tell R what your new label values are:\n\nlabels = c(\"old_value1\" = \"new_value1\", \"old_value2\" = \"new_value2\")\nlabels = c(\"new_value1\", \"new_value2\")\n\n\n\n\n\n\n\nHow does the second method work?\n\n\n\n\n\nIf using the latter method, how does R know what to assign to what? (e.g. how to assign “1” to “Coffelt”, etc?)\nSimply, R assumes you are specifying the new values in the same order as the old values. To check the order of the old values, you can use the levels() and as.factor() functions like so: levels(as.factor(df$variable))\n\n\n\n\n# double-check the order\nlevels(as.factor(temps$neighborhood))\n\n[1] \"1\" \"2\" \"3\" \"4\" \"5\"\n\n# better labels\nggplot(participants, aes(x = neighborhood, y = count)) +\n  geom_col() +\n  labs(title = \"Study participants per neighborhood\") +\n  scale_x_discrete(labels = c(\"Coffelt\", \"Encanto-Palmcroft\", \"Garfield\", \"Thunderhill\", \"Power Ranch\"))",
@@ -684,8 +684,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#harder",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#harder",
+    "objectID": "examples/example-temperatures.html#harder",
+    "href": "examples/example-temperatures.html#harder",
     "title": "Example Analysis: Temperatures",
     "section": "Harder",
     "text": "Harder\n\n\n\n\n\n\nResearch question\n\n\n\nWhat was the daily average temperature for each neighborhood during the study period?\n\n\nSince we know the figures look better with the proper neighborhood names, let’s replace them in our dataset first, before doing more analysis. There is a very handy dplyr function, case_when(), that works like an if_else() statement, where you can specify certain things to occur depending on if a certain condition is TRUE or FALSE.\nThe general usage is as so: case_when(&lt;condition&gt; ~ &lt;outcome&gt;). This function is convenient since you only need to think about the specific &lt;condition&gt; you need to get a certain &lt;outcome&gt;, and you do not necessarily need to address the other possible outcomes.\n\n\n\n\n\n\nAdditional comments on using case_when()\n\n\n\n\n\nConsider running mutate(feels_like = case_when(temperature &gt; 27 ~ \"hot\") on this data: this would create a new column, feels_like, with the value “hot” when the value in temperature is above 27. However, since we did not specify the results for other outcomes (i.e. what value feels_like should take on when temperature is below 27), the rest of this column would fill with NAs.\nOtherwise, this function is especially useful if you want to mutate() specific variables that depend on a complex set of conditionals/criteria (but we have a relatively simple case, here.)\n\n\n\n\n# relabel neighborhoods\ntemps &lt;- temps |&gt;\n  mutate(neighborhood = case_when(neighborhood == 1 ~ \"Coffelt\",\n                                  neighborhood == 2 ~ \"Encanto-PalmCroft\",\n                                  neighborhood == 3 ~ \"Garfield\", \n                                  neighborhood == 4 ~ \"Thunderhill\", \n                                  neighborhood == 5 ~ \"Power Ranch\"))\n\nNow, we’ll calculate the average temperature for each neighborhood on each day of the week. Again, we will use summarize(), then check our math.\n\n# calculate avg daily temps for each neighborhood\ndailyavg &lt;- temps |&gt;\n  group_by(neighborhood, wkday) |&gt;\n  summarize(avgtemp = mean(temperature))\n\ndailyavg\n\n# A tibble: 35 × 3\n# Groups:   neighborhood [5]\n   neighborhood      wkday avgtemp\n   &lt;chr&gt;             &lt;chr&gt;   &lt;dbl&gt;\n 1 Coffelt           Fri      NA  \n 2 Coffelt           Mon      28.8\n 3 Coffelt           Sat      NA  \n 4 Coffelt           Sun      NA  \n 5 Coffelt           Thu      NA  \n 6 Coffelt           Tue      27.9\n 7 Coffelt           Wed      27.3\n 8 Encanto-PalmCroft Fri      NA  \n 9 Encanto-PalmCroft Mon      NA  \n10 Encanto-PalmCroft Sat      NA  \n# ℹ 25 more rows\n\n\nWe can see we have gotten a lot of NA values! This is because not every temperature has a value: we will account for this by including the na.rm = TRUE argument.\n\n# redo math\ndailyavg &lt;- temps |&gt;\n  group_by(neighborhood, wkday) |&gt;\n  summarize(avgtemp = mean(temperature, na.rm = TRUE))\n\ndailyavg\n\n# A tibble: 35 × 3\n# Groups:   neighborhood [5]\n   neighborhood      wkday avgtemp\n   &lt;chr&gt;             &lt;chr&gt;   &lt;dbl&gt;\n 1 Coffelt           Fri      28.1\n 2 Coffelt           Mon      28.8\n 3 Coffelt           Sat      27.6\n 4 Coffelt           Sun      28.7\n 5 Coffelt           Thu      27.4\n 6 Coffelt           Tue      27.9\n 7 Coffelt           Wed      27.3\n 8 Encanto-PalmCroft Fri      27.4\n 9 Encanto-PalmCroft Mon      27.2\n10 Encanto-PalmCroft Sat      27.5\n# ℹ 25 more rows\n\n\nThis looks better! Now we can plot: a line graph probably makes most sense to look at changes over the days of the week. Since we have so many variables (e.g. neighborhood and day of the week), R will have a hard time figuring out which points to connect, so we will also specify the group argument in aes().\n\n# plot\nggplot(dailyavg, aes(x = wkday, y = avgtemp, color = neighborhood, group = neighborhood)) +\n  geom_line() + geom_point() +\n  labs(title = \"Average daily IETs of Pheonix, AZ neighborhoods\", x = \"Day of the week\", y = \"Average temperature (°C)\")\n\n\n\n\n\n\n\n\nWe can see that our days of the week do not look quite right… R is doing the “sensible” thing and listing them in alphabetical order, but we can specify the weekday order by using factor() and using the levels argument.\n\n# reorder days of the week\ndailyavg$wkday &lt;- factor(dailyavg$wkday, levels = c(\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"))\n\n# plot again\nggplot(dailyavg, aes(x = wkday, y = avgtemp, color = neighborhood, group = neighborhood)) +\n  geom_line() + geom_point() +\n  labs(title = \"Average daily IETs of Pheonix, AZ neighborhoods\", x = \"Day of the week\", y = \"Average temperature (°C)\")",
@@ -695,8 +695,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#footnotes",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html#footnotes",
+    "objectID": "examples/example-temperatures.html#footnotes",
+    "href": "examples/example-temperatures.html#footnotes",
     "title": "Example Analysis: Temperatures",
     "section": "",
     "text": "Look up ??stringr::stringr for an overview of the package.↩︎",
@@ -706,8 +706,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html",
+    "objectID": "examples/example-ebola.html",
+    "href": "examples/example-ebola.html",
     "title": "Example Analysis: Ebola",
     "section": "",
     "text": "Preamble\nThis script will loosely follow the template document: it is more meant for you to get an idea of one way to approach the data processing and visualization! This analysis will primarily focus on using tidyverse tools (i.e. dplyr and ggplot).\nFor this dataset, the main skills we want you to practice are:\nThe research questions we will address are:",
@@ -717,8 +717,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#pre-processing",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#pre-processing",
+    "objectID": "examples/example-ebola.html#pre-processing",
+    "href": "examples/example-ebola.html#pre-processing",
     "title": "Example Analysis: Ebola",
     "section": "Pre-processing",
     "text": "Pre-processing\nFirst, let’s just focus on our 3 countries of interest and use filter() to trim down our dataset, saving the output in a new object. We will also rename some of the columns to more manageable names, since they are currently pretty unwieldy in the raw dataset.\n\n# rename columns\nebola_trimmed &lt;- ebola |&gt;\n  filter(Country %in% c(\"Guinea\", \"Liberia\", \"Sierra Leone\")) |&gt;\n  rename(Cases = Cumulative.no..of.confirmed..probable.and.suspected.cases,\n         Deaths = Cumulative.no..of.confirmed..probable.and.suspected.deaths)",
@@ -728,8 +728,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#skill-working-with-dates",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#skill-working-with-dates",
+    "objectID": "examples/example-ebola.html#skill-working-with-dates",
+    "href": "examples/example-ebola.html#skill-working-with-dates",
     "title": "Example Analysis: Ebola",
     "section": "Skill: Working with dates",
     "text": "Skill: Working with dates\nLet’s parse out the Date into separate Year, Month, and Day columns using mutate() with the following steps:\n\nConvert the data in Date from characters into dates using as.Date().\n\nBecause of the way our data is written, the values in Date will automatically take on the %Y-%m-%d format.\n\nCreate Year, Month, and Day columns by extracting the relevant part of the date object using format().\nSimultaneously, we will also convert the parsed dates into numeric using as.numeric(), because format() extracts information as strings/characters.\n\n(Remember that this is just one approach to working with dates!1)\n\n# extract dates\nebola_trimmed &lt;- mutate(ebola_trimmed,\n                Date = as.Date(Date), # convert to dates\n                Year = as.numeric(format(Date, \"%Y\")), # extract different parts of the date\n                Month = as.numeric(format(Date, \"%m\")),\n                Day = as.numeric(format(Date, \"%d\")))",
@@ -739,8 +739,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#skill-pivoting",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#skill-pivoting",
+    "objectID": "examples/example-ebola.html#skill-pivoting",
+    "href": "examples/example-ebola.html#skill-pivoting",
     "title": "Example Analysis: Ebola",
     "section": "Skill: Pivoting",
     "text": "Skill: Pivoting\nThis data doesn’t quite follow tidy data principles. We have two types of counts, Cases and Deaths, spread across the column headers: Cases and Deaths could be considered to be different values of a variable for the “type” of count. So, we will consolidate them with pivot_longer(), putting these old column names into a new column, Type, and cell values into another column, Count.\n\n# pivot\nebola_trimmed &lt;- pivot_longer(ebola_trimmed,\n                      cols = c(\"Cases\", \"Deaths\"), # select columns to be pivoted\n                      names_to = \"Type\",\n                      values_to = \"Count\")",
@@ -750,8 +750,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#easier",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#easier",
+    "objectID": "examples/example-ebola.html#easier",
+    "href": "examples/example-ebola.html#easier",
     "title": "Example Analysis: Ebola",
     "section": "Easier",
     "text": "Easier\n\n\n\n\n\n\nResearch question\n\n\n\nHow many cases and deaths in total were recorded by each country from 2014-2016?\n\n\nWe don’t need to do anything further to the data: since we want to show totals, a bar graph showing the counts for each region should suffice.\n\n# plot total counts\nggplot(ebola_trimmed, aes(x = Country, y = Count, fill = Type)) +\n  geom_col(position=\"dodge\") +\n  labs(title = \"Total Ebola Cases and Deaths from 2014-2016\")",
@@ -761,8 +761,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#harder",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#harder",
+    "objectID": "examples/example-ebola.html#harder",
+    "href": "examples/example-ebola.html#harder",
     "title": "Example Analysis: Ebola",
     "section": "Harder",
     "text": "Harder\n\n\n\n\n\n\nResearch question\n\n\n\nBy country, how did the average number of cases and death change each year?\n\n\nWe can use summarize() to generate some summary statistics. Since we want to look at trends over time, a line plot would be useful.\n\n# calculate stats by country, type, year\nebola_stats &lt;- ebola_trimmed |&gt;\n  group_by(Country, Type, Year) |&gt;\n  summarize(Average = mean(Count))\n\n# plot it\nggplot(ebola_stats, \n       aes(y = Average, x = Year, color = Country)) +\n  geom_line() + geom_point() + # (line is easier to see with points)\n  facet_wrap(~Type) +\n  labs(title = \"Average Ebola Cases and Deaths from 2014-2016\")\n\n\n\n\n\n\n\n\nThis looks a little ugly with the decimal points: we can clean it up by converting Year to a factor. However, this also confuses R in geom_line(), and it can’t figure out which points to connect together: so, to clarify, we’ll also specify the group variable in aes().\n\n# adjust it\nggplot(ebola_stats, \n       aes(y = Average, x = as.factor(Year), color = Country, # change Year to factor\n           group = Country)) + # specify grouping variable\n  geom_line() + geom_point() +\n  facet_wrap(~Type) +\n  labs(title = \"Average Ebola Cases and Deaths from 2014-2016\",\n       x = \"Year\") # relabel the x-axis",
@@ -772,8 +772,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#footnotes",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html#footnotes",
+    "objectID": "examples/example-ebola.html#footnotes",
+    "href": "examples/example-ebola.html#footnotes",
     "title": "Example Analysis: Ebola",
     "section": "",
     "text": "https://stackoverflow.com/questions/4078502/split-date-data-m-d-y-into-3-separate-columns↩︎",
@@ -783,8 +783,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html",
+    "objectID": "examples/example-avida.html",
+    "href": "examples/example-avida.html",
     "title": "Example Analysis: Avida",
     "section": "",
     "text": "Preamble\nThis script will loosely follow the template document: it is more meant for you to get an idea of one way to approach the data processing and visualization! This analysis will primarily focus on using tidyverse tools (i.e. dplyr and ggplot).\nFor this dataset, the main skills we want you to practice are:\nThe research questions we will address are:",
@@ -794,8 +794,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html#skill-working-with-multiple-datasets",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html#skill-working-with-multiple-datasets",
+    "objectID": "examples/example-avida.html#skill-working-with-multiple-datasets",
+    "href": "examples/example-avida.html#skill-working-with-multiple-datasets",
     "title": "Example Analysis: Avida",
     "section": "Skill: Working with multiple datasets",
     "text": "Skill: Working with multiple datasets\nFor this data, it will be easiest to work with them if we combine the files all together. Because they all have the same structure (same column names and number of columns), we can just use rbind() to stack the rows on top of each other.\n\n# combine\nall &lt;- rbind(wt, mut, comp)\n\n\n\n\n\n\n\nOther approaches to combining 3+ dataframes\n\n\n\n\n\nA tidyverse approach to combining 3+ dataframes that share common columns/rows but are not as similar to each other could be to use reduce() and merge(). Put your dataframes into a list before combining them: reduce(list(df1, df2, df3), merge)",
@@ -805,8 +805,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html#skill-pivoting",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html#skill-pivoting",
+    "objectID": "examples/example-avida.html#skill-pivoting",
+    "href": "examples/example-avida.html#skill-pivoting",
     "title": "Example Analysis: Avida",
     "section": "Skill: Pivoting",
     "text": "Skill: Pivoting\nTo make our data tidy, we can extract the information about media type from the population metrics columns with pivot_longer().\nBecause the column names are similarly structured as &lt;media type&gt;_&lt;measurement&gt;, picking the columns we want to pivot will be straightforward if we use starts_with() in the cols argument. We want to keep the measurement name that’s already in the column, so we will specify that in the names_to argument. Finally, we can use the names_sep argument to specify how to break up the current column names into the new column names (here, the new column names are all separated by the underscore).\n\n# pivot\nall &lt;- pivot_longer(all,\n                    cols = starts_with(c(\"minimal\", \"rich\", \"selective\")),\n                    names_to = c(\"media\", \".value\"), # \".value\" will keep the &lt;measurement&gt; as the column name after pivoting\n                    names_sep = \"_\")",
@@ -816,8 +816,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html#easier",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html#easier",
+    "objectID": "examples/example-avida.html#easier",
+    "href": "examples/example-avida.html#easier",
     "title": "Example Analysis: Avida",
     "section": "Easier",
     "text": "Easier\n\n\n\n\n\n\nResearch question\n\n\n\nHow does population size change over time for the wildtype (or mutant) in different medias?\n\n\nSince we already combined all the data, we will select the mutant/wildtype data to plot using filter() and keep them distinct with facet_wrap(). Otherwise, you can read in just the wt or mut data on their own and skip the faceting (assuming that you’ve used similar steps to pivot).\nBecause we want to show something changing over time, we should use a line graph.\n\n# plot population size of the wt/mut\nall |&gt;\n  filter(condition != \"competition\") |&gt;\n  ggplot(aes(x = update, y = pop.size, color = media)) +\n  facet_wrap(~condition) +\n  geom_line() +\n  labs(title = \"Population size of wildtype/mutant in media over time\")",
@@ -827,8 +827,8 @@
     ]
   },
   {
-    "objectID": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html#harder",
-    "href": "deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html#harder",
+    "objectID": "examples/example-avida.html#harder",
+    "href": "examples/example-avida.html#harder",
     "title": "Example Analysis: Avida",
     "section": "Harder",
     "text": "Harder\n\n\n\n\n\n\nResearch question\n\n\n\nHow does the change in fitness over time compare between different treatment conditions and media types?\n\n\nThe hardest part about this question was getting the data combined and processed: there are no further steps to take, other than to plot.\nThere is a similar emphasis on time here, so we will use a line plot.\n\n# plot fitness\nggplot(all, aes(x = update, y = avg.fitness, color = condition)) +\n  geom_line() +\n  facet_wrap(~media) +\n  labs(title = \"Avg fitness of populations in media over time\")",

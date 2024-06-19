@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-06-19">
 
 <title>How To Learn to Code : R for Data Science - Example Analysis: Temperatures</title>
 <style>
@@ -58,23 +57,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../../../">
-<link href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html" rel="next">
-<link href="../../../../../class8.html" rel="prev">
-<script src="../../../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../examples/example-ebola.html" rel="next">
+<link href="../class8.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">How to Learn to Code</span>
     </a>
   </div>
@@ -139,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html"><span class="chapter-title">Example Analysis: Temperatures</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../examples/example-temperatures.html"><span class="chapter-title">Example Analysis: Temperatures</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -156,53 +155,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome to How to Learn to Code!</span></a>
+  <a href="../class0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome to How to Learn to Code!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R Coding Basics</span></a>
+  <a href="../class1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R Coding Basics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Applying Coding Basics</span></a>
+  <a href="../class2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Applying Coding Basics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Let’s Get Plotting!</span></a>
+  <a href="../class3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Let’s Get Plotting!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Applying Visualization Methods</span></a>
+  <a href="../class4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Applying Visualization Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Wrangling Basics</span></a>
+  <a href="../class5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Wrangling Basics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Wrangling with Real Experimental Data</span></a>
+  <a href="../class6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Wrangling with Real Experimental Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Running a Reproducible Analysis</span></a>
+  <a href="../class7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Running a Reproducible Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../../../class8.html" class="sidebar-item-text sidebar-link">
+            <a href="../class8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practicing on Real-World Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -211,17 +210,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Example Analysis: Temperatures</span></a>
+  <a href="../examples/example-temperatures.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Example Analysis: Temperatures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Example Analysis: Ebola</span></a>
+  <a href="../examples/example-ebola.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Example Analysis: Ebola</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Example Analysis: Avida</span></a>
+  <a href="../examples/example-avida.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Example Analysis: Avida</span></a>
   </div>
 </li>
       </ul>
@@ -255,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html"><span class="chapter-title">Example Analysis: Temperatures</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../examples/example-temperatures.html"><span class="chapter-title">Example Analysis: Temperatures</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">Example Analysis: Temperatures</span></h1>
 </div>
@@ -265,12 +264,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 19, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -1024,12 +1017,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../../../class8.html" class="pagination-link" aria-label="Practicing on Real-World Data">
+      <a href="../class8.html" class="pagination-link" aria-label="Practicing on Real-World Data">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Practicing on Real-World Data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html" class="pagination-link" aria-label="Example Analysis: Ebola">
+      <a href="../examples/example-ebola.html" class="pagination-link" aria-label="Example Analysis: Ebola">
         <span class="nav-page-text"><span class="chapter-title">Example Analysis: Ebola</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

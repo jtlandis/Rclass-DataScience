@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-06-19">
 
-<title>How To Learn to Code : R for Data Science - Example Analysis: Avida</title>
+<title>How To Learn to Code : R for Data Science - Example Analysis: Ebola</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,22 +57,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../../../">
-<link href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html" rel="prev">
-<script src="../../../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../examples/example-avida.html" rel="next">
+<link href="../examples/example-temperatures.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">How to Learn to Code</span>
     </a>
   </div>
@@ -138,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html"><span class="chapter-title">Example Analysis: Avida</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../examples/example-ebola.html"><span class="chapter-title">Example Analysis: Ebola</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -155,53 +155,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome to How to Learn to Code!</span></a>
+  <a href="../class0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome to How to Learn to Code!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R Coding Basics</span></a>
+  <a href="../class1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R Coding Basics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Applying Coding Basics</span></a>
+  <a href="../class2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Applying Coding Basics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Let’s Get Plotting!</span></a>
+  <a href="../class3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Let’s Get Plotting!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Applying Visualization Methods</span></a>
+  <a href="../class4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Applying Visualization Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Wrangling Basics</span></a>
+  <a href="../class5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Wrangling Basics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Wrangling with Real Experimental Data</span></a>
+  <a href="../class6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Wrangling with Real Experimental Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../class7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Running a Reproducible Analysis</span></a>
+  <a href="../class7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Running a Reproducible Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../../../class8.html" class="sidebar-item-text sidebar-link">
+            <a href="../class8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practicing on Real-World Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -210,17 +210,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-temperatures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Example Analysis: Temperatures</span></a>
+  <a href="../examples/example-temperatures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Example Analysis: Temperatures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Example Analysis: Ebola</span></a>
+  <a href="../examples/example-ebola.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Example Analysis: Ebola</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Example Analysis: Avida</span></a>
+  <a href="../examples/example-avida.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Example Analysis: Avida</span></a>
   </div>
 </li>
       </ul>
@@ -239,7 +239,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#load-data-and-libraries" id="toc-load-data-and-libraries" class="nav-link" data-scroll-target="#load-data-and-libraries">1. Load data and libraries</a></li>
   <li><a href="#format-the-data" id="toc-format-the-data" class="nav-link" data-scroll-target="#format-the-data">2. Format the Data</a>
   <ul>
-  <li><a href="#skill-working-with-multiple-datasets" id="toc-skill-working-with-multiple-datasets" class="nav-link" data-scroll-target="#skill-working-with-multiple-datasets">Skill: Working with multiple datasets</a></li>
+  <li><a href="#pre-processing" id="toc-pre-processing" class="nav-link" data-scroll-target="#pre-processing">Pre-processing</a></li>
+  <li><a href="#skill-working-with-dates" id="toc-skill-working-with-dates" class="nav-link" data-scroll-target="#skill-working-with-dates">Skill: Working with dates</a></li>
   <li><a href="#skill-pivoting" id="toc-skill-pivoting" class="nav-link" data-scroll-target="#skill-pivoting">Skill: Pivoting</a></li>
   </ul></li>
   <li><a href="#visualize-the-data" id="toc-visualize-the-data" class="nav-link" data-scroll-target="#visualize-the-data">3. Visualize the Data</a>
@@ -254,9 +255,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-avida.html"><span class="chapter-title">Example Analysis: Avida</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../examples/example-ebola.html"><span class="chapter-title">Example Analysis: Ebola</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Example Analysis: Avida</span></h1>
+<h1 class="title"><span class="chapter-title">Example Analysis: Ebola</span></h1>
 </div>
 
 
@@ -264,12 +265,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 19, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -285,13 +280,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <p>For this dataset, the <strong>main skills</strong> we want you to practice are:</p>
 <ol type="1">
-<li>Working with multiple files: to be able to work with this data in its entirety, the files should be combined together.</li>
-<li>Pivoting: this dataset is an example of where multiple variables are contained in the column names.</li>
+<li>Working with dates: you can get a more fine-scale understanding of the data here by parsing out the <code>Date</code> column into year, month, and day.</li>
+<li>Pivoting: notice that the count types are in separate columns (cases and deaths) – it’ll be easier to work with them if they were consolidated.</li>
 </ol>
 <p>The <strong>research questions</strong> we will address are:</p>
 <ol type="1">
-<li>Easier: How does population size change over time for the wildtype (or mutant) in different medias?</li>
-<li>Harder: How does the change in fitness over time compare between different treatment conditions and media types?</li>
+<li>Easier: How many cases and deaths in total were recorded by each country from 2014-2016?</li>
+<li>Harder: By country, how did the average number of cases and death change each year?</li>
 </ol>
 </section>
 <section id="load-data-and-libraries" class="level1">
@@ -299,47 +294,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>wt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"your/path/to/avida_wildtype.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mut <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"your/path/to/avida_mutant.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>comp <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"your/path/to/avida_competition.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ebola <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"your/path/to/ebola.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="format-the-data" class="level1">
 <h1>2. Format the Data</h1>
-<section id="skill-working-with-multiple-datasets" class="level2">
-<h2 class="anchored" data-anchor-id="skill-working-with-multiple-datasets">Skill: Working with multiple datasets</h2>
-<p>For this data, it will be easiest to work with them if we combine the files all together. Because they all have the same structure (same column names and number of columns), we can just use <code>rbind()</code> to stack the rows on top of each other.</p>
+<section id="pre-processing" class="level2">
+<h2 class="anchored" data-anchor-id="pre-processing">Pre-processing</h2>
+<p>First, let’s just focus on our 3 countries of interest and use <code>filter()</code> to trim down our dataset, saving the output in a new object. We will also rename some of the columns to more manageable names, since they are currently pretty unwieldy in the raw dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combine</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="fu">rbind</span>(wt, mut, comp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename columns</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ebola_trimmed <span class="ot">&lt;-</span> ebola <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Guinea"</span>, <span class="st">"Liberia"</span>, <span class="st">"Sierra Leone"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Cases =</span> Cumulative.no..of.confirmed..probable.and.suspected.cases,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">Deaths =</span> Cumulative.no..of.confirmed..probable.and.suspected.deaths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Other approaches to combining 3+ dataframes">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Other approaches to combining 3+ dataframes
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>A tidyverse approach to combining 3+ dataframes that share common columns/rows but are not as similar to each other could be to use <code>reduce()</code> and <code>merge()</code>. Put your dataframes into a list before combining them: <code>reduce(list(df1, df2, df3), merge)</code></p>
-</div>
-</div>
+</section>
+<section id="skill-working-with-dates" class="level2">
+<h2 class="anchored" data-anchor-id="skill-working-with-dates">Skill: Working with dates</h2>
+<p>Let’s parse out the <code>Date</code> into separate <code>Year</code>, <code>Month</code>, and <code>Day</code> columns using <code>mutate()</code> with the following steps:</p>
+<ol type="1">
+<li>Convert the data in <code>Date</code> from characters into dates using <code>as.Date().</code>
+<ol type="a">
+<li>Because of the way our data is written, the values in <code>Date</code> will automatically take on the <code>%Y-%m-%d</code> format.</li>
+</ol></li>
+<li>Create <code>Year</code>, <code>Month</code>, and <code>Day</code> columns by extracting the relevant part of the date object using <code>format()</code>.</li>
+<li>Simultaneously, we will also convert the parsed dates into numeric using <code>as.numeric()</code>, because <code>format()</code> extracts information as strings/characters.</li>
+</ol>
+<p>(Remember that this is just one approach to working with dates!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract dates</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ebola_trimmed <span class="ot">&lt;-</span> <span class="fu">mutate</span>(ebola_trimmed,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">Date =</span> <span class="fu">as.Date</span>(Date), <span class="co"># convert to dates</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">Year =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(Date, <span class="st">"%Y"</span>)), <span class="co"># extract different parts of the date</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">Month =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(Date, <span class="st">"%m"</span>)),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">Day =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(Date, <span class="st">"%d"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="skill-pivoting" class="level2">
 <h2 class="anchored" data-anchor-id="skill-pivoting">Skill: Pivoting</h2>
-<p>To make our data tidy, we can extract the information about media type from the population metrics columns with <code>pivot_longer()</code>.</p>
-<p>Because the column names are similarly structured as <code>&lt;media type&gt;_&lt;measurement&gt;</code>, picking the columns we want to pivot will be straightforward if we use <code>starts_with()</code> in the <code>cols</code> argument. We want to keep the measurement name that’s already in the column, so we will specify that in the <code>names_to</code> argument. Finally, we can use the <code>names_sep</code> argument to specify how to break up the current column names into the new column names (here, the new column names are all separated by the underscore).</p>
+<p>This data doesn’t quite follow tidy data principles. We have two types of counts, <code>Cases</code> and <code>Deaths</code>, spread across the column headers: <code>Cases</code> and <code>Deaths</code> could be considered to be different values of a variable for the “type” of count. So, we will consolidate them with <code>pivot_longer()</code>, putting these old column names into a new column, <code>Type</code>, and cell values into another column, <code>Count</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(all,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"minimal"</span>, <span class="st">"rich"</span>, <span class="st">"selective"</span>)),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"media"</span>, <span class="st">".value"</span>), <span class="co"># ".value" will keep the &lt;measurement&gt; as the column name after pivoting</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">names_sep =</span> <span class="st">"_"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ebola_trimmed <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(ebola_trimmed,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Cases"</span>, <span class="st">"Deaths"</span>), <span class="co"># select columns to be pivoted</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names_to =</span> <span class="st">"Type"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -357,23 +357,19 @@ Research question
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>How does population size change over time for the wildtype (or mutant) in different medias?</p>
+<p>How many cases and deaths in total were recorded by each country from 2014-2016?</p>
 </div>
 </div>
-<p>Since we already combined all the data, we will select the mutant/wildtype data to plot using <code>filter()</code> and keep them distinct with <code>facet_wrap()</code>. Otherwise, you can read in just the <code>wt</code> or <code>mut</code> data on their own and skip the faceting (assuming that you’ve used similar steps to pivot).</p>
-<p>Because we want to show something changing over time, we should use a line graph.</p>
+<p>We don’t need to do anything further to the data: since we want to show totals, a bar graph showing the counts for each region should suffice.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot population size of the wt/mut</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>all <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(condition <span class="sc">!=</span> <span class="st">"competition"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> update, <span class="at">y =</span> pop.size, <span class="at">color =</span> media)) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>condition) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Population size of wildtype/mutant in media over time"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot total counts</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ebola_trimmed, <span class="fu">aes</span>(<span class="at">x =</span> Country, <span class="at">y =</span> Count, <span class="at">fill =</span> Type)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Total Ebola Cases and Deaths from 2014-2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="example-avida_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="example-ebola_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -391,21 +387,44 @@ Research question
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>How does the change in fitness over time compare between different treatment conditions and media types?</p>
+<p>By country, how did the average number of cases and death change each year?</p>
 </div>
 </div>
-<p>The hardest part about this question was getting the data combined and processed: there are no further steps to take, other than to plot.</p>
-<p>There is a similar emphasis on time here, so we will use a line plot.</p>
+<p>We can use <code>summarize()</code> to generate some summary statistics. Since we want to look at trends over time, a line plot would be useful.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot fitness</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all, <span class="fu">aes</span>(<span class="at">x =</span> update, <span class="at">y =</span> avg.fitness, <span class="at">color =</span> condition)) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>media) <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Avg fitness of populations in media over time"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate stats by country, type, year</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ebola_stats <span class="ot">&lt;-</span> ebola_trimmed <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Country, Type, Year) <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Average =</span> <span class="fu">mean</span>(Count))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot it</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ebola_stats, </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Average, <span class="at">x =</span> Year, <span class="at">color =</span> Country)) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># (line is easier to see with points)</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Type) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Ebola Cases and Deaths from 2014-2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="example-avida_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="example-ebola_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This looks a little ugly with the decimal points: we can clean it up by converting <code>Year</code> to a factor. However, this also confuses R in <code>geom_line()</code>, and it can’t figure out which points to connect together: so, to clarify, we’ll also specify the <code>group</code> variable in <code>aes()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adjust it</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ebola_stats, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Average, <span class="at">x =</span> <span class="fu">as.factor</span>(Year), <span class="at">color =</span> Country, <span class="co"># change Year to factor</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Country)) <span class="sc">+</span> <span class="co"># specify grouping variable</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Type) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Ebola Cases and Deaths from 2014-2016"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>) <span class="co"># relabel the x-axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="example-ebola_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -416,7 +435,7 @@ Research question
 <section id="code-only" class="level1">
 <h1>Code only</h1>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -425,46 +444,69 @@ Code only
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>(Finalized code adjustments shown)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data, load libraries</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>wt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"your/path/to/avida_wildtype.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mut <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"your/path/to/avida_mutant.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>comp <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"your/path/to/avida_competition.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># wrangle</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="do">## combine</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="fu">rbind</span>(wt, mut, comp)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">## pivot</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(all,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"minimal"</span>, <span class="st">"rich"</span>, <span class="st">"selective"</span>)),</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"media"</span>, <span class="st">".value"</span>), <span class="co"># ".value" will keep the &lt;measurement&gt; as the column name after pivoting</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">names_sep =</span> <span class="st">"_"</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">## easier: plot population size for wt/mut</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>all <span class="sc">|&gt;</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(condition <span class="sc">!=</span> <span class="st">"competition"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> update, <span class="at">y =</span> pop.size, <span class="at">color =</span> media)) <span class="sc">+</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>condition) <span class="sc">+</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Population size of wildtype/mutant in media over time"</span>)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="do">## harder: plot fitness for all 3 conditions across all media types</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all, <span class="fu">aes</span>(<span class="at">x =</span> update, <span class="at">y =</span> avg.fitness, <span class="at">color =</span> condition)) <span class="sc">+</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>media) <span class="sc">+</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Avg fitness of populations in media over time"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data, load libraries</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ebola <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"your/path/to/ebola.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># wrangle</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## filter countries and tidy column names</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>ebola_trimmed <span class="ot">&lt;-</span> ebola <span class="sc">|&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Guinea"</span>, <span class="st">"Liberia"</span>, <span class="st">"Sierra Leone"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Cases =</span> Cumulative.no..of.confirmed..probable.and.suspected.cases,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">Deaths =</span> Cumulative.no..of.confirmed..probable.and.suspected.deaths)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## extract date information</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>ebola_trimmed <span class="ot">&lt;-</span> <span class="fu">mutate</span>(ebola_trimmed,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">Date =</span> <span class="fu">as.Date</span>(Date), <span class="co"># convert to dates</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">Year =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(Date, <span class="st">"%Y"</span>)), <span class="co"># extract different parts of the date</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">Month =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(Date, <span class="st">"%m"</span>)),</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">Day =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(Date, <span class="st">"%d"</span>)))</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="do">## pivot</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>ebola_trimmed <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(ebola_trimmed,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Cases"</span>, <span class="st">"Deaths"</span>), <span class="co"># select columns to be pivoted</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names_to =</span> <span class="st">"Type"</span>,</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"Count"</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="do">## easier: plot total cases</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ebola_trimmed, <span class="fu">aes</span>(<span class="at">x =</span> Country, <span class="at">y =</span> Count, <span class="at">fill =</span> Type)) <span class="sc">+</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Total Ebola Cases and Deaths from 2014-2016"</span>)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="do">## harder: plot average cases</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="do">### calculate stats</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>ebola_stats <span class="ot">&lt;-</span> ebola_trimmed <span class="sc">|&gt;</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Country, Type, Year) <span class="sc">|&gt;</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Average =</span> <span class="fu">mean</span>(Count))</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="do">### plot</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ebola_stats, </span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Average, <span class="at">x =</span> <span class="fu">as.factor</span>(Year), <span class="at">color =</span> Country,</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Country)) <span class="sc">+</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Type) <span class="sc">+</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Ebola Cases and Deaths from 2014-2016"</span>,</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><a href="https://stackoverflow.com/questions/4078502/split-date-data-m-d-y-into-3-separate-columns" class="uri">https://stackoverflow.com/questions/4078502/split-date-data-m-d-y-into-3-separate-columns</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -879,11 +921,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../../../deprecates/scripts/04_projects/project-day-2-files/example-analyses/example-ebola.html" class="pagination-link" aria-label="Example Analysis: Ebola">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Example Analysis: Ebola</span></span>
+      <a href="../examples/example-temperatures.html" class="pagination-link" aria-label="Example Analysis: Temperatures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Example Analysis: Temperatures</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../examples/example-avida.html" class="pagination-link" aria-label="Example Analysis: Avida">
+        <span class="nav-page-text"><span class="chapter-title">Example Analysis: Avida</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
