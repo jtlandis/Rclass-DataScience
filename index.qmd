@@ -3,7 +3,7 @@
 Welcome to How to Learn to Code!!
 
 ```{r}
-#| echo: false
+
 library(ggside)
 ```
 
