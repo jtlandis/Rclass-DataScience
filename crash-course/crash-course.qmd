@@ -1,0 +1,390 @@
+## logical operators
+
+We have talked about the base types in Lectures 1 and 2. As a reminder:
+
+```{r}
+# character types wrapped in quotes ""
+character_obj <- "hello world"
+# integer type (numbers followed by L)
+integer_obj <- 1L
+# double type
+numeric_obj <- 1
+# logical type
+logical_obj <- c(TRUE, FALSE)
+```
+
+In this section we will discuss how to logical operators. This will lead into our next section on conditionals.
+
+Logical operators are operators that compare two vectors in some way and will **return a logical vector**. These are convenient for filtering data according to what you want, as you can use the returned logical vector to index another!
+
+### AND operator `&`
+
+This operator can be used between logical and numeric vector types. Suppose that you had two vectors assigned to `x` and `y`. You would use `&` like so: `x & y`
+
+This operator will return `TRUE` when both `x` **AND** `y` are `TRUE`.
+
+| `x` value | `y` value | Outcome of `x & y` |
+|-----------|-----------|--------------------|
+| `TRUE`    | `TRUE`    | `TRUE`             |
+| `TRUE`    | `FALSE`   | `FALSE`            |
+| `FALSE`   | `TRUE`    | `FALSE`            |
+| `FALSE`   | `FALSE`   | `FALSE`            |
+
+: all possible combinations between `TRUE` and `FALSE` values.
+
+::: callout-note
+For numeric vectors, any value equal to 0 is equivalent to `FALSE` and otherwise considered `TRUE`.
+:::
+
+### OR operator `|`
+
+This operator can also be used between logical and numeric vector types. It will be used similar to `&`, for example `x | y`.
+
+This operator will return `TRUE` when either `x` **OR** `y` are `TRUE`.
+
+| `x` value | `y` value | Outcome of `x | y` |
+|-----------|-----------|--------------------|
+| `TRUE`    | `TRUE`    | `TRUE`             |
+| `TRUE`    | `FALSE`   | `TRUE`             |
+| `FALSE`   | `TRUE`    | `TRUE`             |
+| `FALSE`   | `FALSE`   | `FALSE`            |
+
+: all possible combinations between `TRUE` and `FALSE` values.
+
+::: callout-note
+Similar to before, you can also use `|` with numeric types as well.
+:::
+
+### Not operator `!`
+
+This operator is a convenient way to negate a logical expression. Unlike before, where `&` and `|` require two variables to be used, this operator is used on a single variable.
+
+| `x value` | Outcome of `!x` |
+|-----------|-----------------|
+| `TRUE`    | `FALSE`         |
+| `FALSE`   | `TRUE`          |
+
+Sometimes using `!` with a single variable is sufficient for our needs, but we can do a lot more by combining other logical operators together.
+
+| `x` value | `y` value | Outcome of `!(x & y)` | Outcome of `!(x | y)` |
+|-----------|-----------|-----------------------|-----------------------|
+| `TRUE`    | `TRUE`    | `FALSE`               | `FALSE`               |
+| `TRUE`    | `FALSE`   | `TRUE`                | `FALSE`               |
+| `FALSE`   | `TRUE`    | `TRUE`                | `FALSE`               |
+| `FALSE`   | `FALSE`   | `TRUE`                | `TRUE`                |
+
+### Equalities and Inequalities
+
+| Plain English                       | Operator | Example  | Object Types     |
+|-------------------------------------|----------|----------|------------------|
+| Is `x` equal to `y`                 | `==`     | `x == y` | All types        |
+| Is `x` not equal to `y`             | `!=`     | `x != y` | All types        |
+| Is `x` greater than `y`             | `>`      | `x > y`  | numeric, logical |
+| Is `x` greater than or equal to `y` | `>=`     | `x >= y` | numeric, logical |
+| Is `x` less than `y`                | `<`      | `x < y`  | numeric, logical |
+| Is `x` less than or equal to `y`    | `<=`     | `x <= y` | numeric, logical |
+
+: list of equalities/inequalities and how to use them
+
+### Doing more with `()`
+
+Just like in algebra, the `()` are used to prioritize execution of expressions. Suppose we had three logical vectors, `x`, `y`, and `z`.
+
+The expression `x & (y | z)` will evaluate `y | z` before comparing `x` with its result.
+
+| `x`     | `y`     | `z`     | `(y | z)` | `x & (y | z)` |
+|---------|---------|---------|-----------|---------------|
+| `TRUE`  | `TRUE`  | `TRUE`  | `TRUE`    | `TRUE`        |
+| `FALSE` | `TRUE`  | `TRUE`  | `TRUE`    | `FALSE`       |
+| `TRUE`  | `FALSE` | `TRUE`  | `TRUE`    | `TRUE`        |
+| `FALSE` | `FALSE` | `TRUE`  | `TRUE`    | `FALSE`       |
+| `TRUE`  | `TRUE`  | `FALSE` | `TRUE`    | `TRUE`        |
+| `FALSE` | `TRUE`  | `FALSE` | `TRUE`    | `FALSE`       |
+| `TRUE`  | `FALSE` | `FALSE` | `FALSE`   | `FALSE`       |
+| `FALSE` | `FALSE` | `FALSE` | `FALSE`   | `FALSE`       |
+
+### Other Notable R functions
+
+-   `all(x)` returns `TRUE` if all values of `x` are `TRUE`
+
+-   `any(x)` returns `TRUE` if at least one value of `x` is `TRUE`
+
+-   `which(x)` returns the indices of `x` that were `TRUE`
+
+## conditional execution
+
+Sometimes we want to execute code only when a certain condition is met. Here, we may have a result of some logical operators and then do something special.
+
+```{r}
+# imagine `condition` was some result
+# from a prior analysis
+condition <- TRUE
+
+if (condition) {
+  print("Condition was TRUE!")
+}
+
+if (!condition) {
+  print("Condition was not TRUE")
+}
+```
+
+Sometimes we know that we want to run code if `condition` is `TRUE` and another chunk if `condition` is `FALSE`. In this case, we would use an `if else` statement.
+
+```{r}
+# imagine `condition` was some result
+# from a prior analysis
+condition <- FALSE
+
+if (condition) {
+  print("Condition was TRUE!")
+} else {
+  print("Condition was not TRUE")
+}
+```
+
+We can also test multiple conditions with `if else if` statements!
+
+```{r}
+condition1 <- FALSE
+condition2 <- TRUE
+
+if (condition1) {
+  print("Condition 1 was TRUE!")
+} else if (condition2) {
+  print("Condition 2 was TRUE")
+} else {
+  print("No condition was TRUE")
+}
+
+```
+
+::: callout-note
+You can chain multiple `if else if` statements together, but doing so may lead some hard to read code.
+:::
+
+## Loops
+
+### `for` loop
+
+The `for` loop has special syntax and works with any **vector like** object that has non-zero length.
+
+```{r}
+#| eval: false
+#.for syntax
+#.^     iterator placeholder
+#.|     ^     syntax of the loop
+#.|     |     ^     input vector
+#.|     |     |     ^
+#.|     |     |     |
+for (element in x_vector) {
+  # Do something with `x`
+  # ... 
+}
+```
+
+### `while` loop
+
+The `while` loop allows us to evaluate some code provided some condition is `TRUE`.
+
+```{r}
+#| eval: false
+#. `while` syntax
+#.  ^      some expression that evaluates to 
+#.  |      `TRUE` or `FALSE`
+#.  |      ^
+#.  |      |
+while (condition) {
+  # Do something here
+  # ...
+}
+```
+
+### `repeat` loop
+
+`repeat` is special syntax to repeat the next expression with no specified stops. This is different than `for` loops which will stop after the last element of the input vector is reached, and in `while` where the associated expression only evaluates when the condition is `TRUE`.\
+\
+To prevent the next bit of code from running forever, I have included the control flow **keyword** `break` within an if statement.
+
+```{r}
+count <- 0L
+start <- Sys.time()
+repeat {
+  count <- count + 1L
+  time_diff <- Sys.time() - start
+  # if we reach a time diff greater 
+  # than a second, break out of loop
+  if (time_diff > 1) break
+}
+cat("`repeat` ran ", count, " times in a second")
+
+```
+
+
+## Control flow
+
+Technically, everything we have talked about is control flow (see `?Control`). But more specifically, we have two keywords that help control the flow of execution within `for`, `while`, and `repeat`
+
+### `next`
+
+The `next` keyword will skip the rest of the code block and start the next iteration of the loop.
+
+```{r}
+for (i in 1:10) {
+  if (i != 5L) next
+  print("We found the 5")
+}
+```
+
+### `break`
+
+The `break` keyword will stop the execution of the code block.
+
+```{r}
+for (i in 1:10) {
+  print(i)
+  if (i == 5L) break
+}
+```
+
+## Classes
+
+We have talked about object "types" before and have loosely related them to object "classes". These are technically distinct attributes of every R object.
+
+Every object's class can be modified by the user at any time.
+
+```{r}
+obj <- 1:10
+class(obj)
+typeof(obj)
+class(obj) <- "foo"
+obj
+typeof(obj)
+```
+
+Changing the class of your objects is the first step in creating custom behaviors for your code through R's various class systems. Creating custom behaviors for our custom class are handled by creating methods on **generic functions**.
+
+Beyond custom methods, a custom class may also carry additional data in the object's `attributes()`. A class with consistent structure will lead to more structured analysis and execution.
+
+R has (at the moment) about 5 class systems to choose from. We do not have time to discuss all of them in detail. Instead I will discuss the most pervasive class system **S3**. For the other class systems, I will briefly talk about where they are used and some important key features, but I will not show how to construct a new class or define methods for them.
+
+### S3
+
+S3 is the simplest class system in R, and much of base R is built from this design style.
+
+As we saw before, we can create a new class by passing in a character vector to `class()`.
+
+```{r}
+obj <- list()
+class(obj) <- "foo"
+obj
+```
+
+#### generic functions
+
+S3 defines methods for generic functions through a specific naming convention (`<generic function>.<class name>`). We have been interacting with many generic functions in R already. One of them is the `print()` generic function.
+
+```{r}
+print
+```
+
+We can see that the only expression in the body of `print()` is `UseMethod("print")`. This is what causes R to dispatch to print. We can make our own print method for our custom class `"foo"`.
+
+```{r}
+print.foo <- function(x) {
+  cat("<My custom class `foo`>\n")
+}
+obj
+```
+
+We can also create our own function too!
+
+```{r}
+my_generic <- function(x) {
+  UseMethod("my_generic")
+}
+my_generic.foo <- function(x) {
+  print("my_generic: foo method")
+}
+my_generic(obj)
+```
+
+If we try to call `my_generic()` on some other object that isn't `"foo"` we will get an error
+
+```{r}
+#| error: true
+my_generic(list())
+```
+
+If we want `my_generic()` to work with any object, we need to create a default method.
+
+```{r}
+my_generic.default <- function(x) {
+  print("my_generic: default method")
+}
+my_generic(list())
+```
+
+::: {.callout-note title="A note on method dispatch"}
+S3 is very simple. While this dispatch mechanism does provide for some customization it is limited in that it will only dispatch on one argument (the first argument of your function).
+
+Other class systems like **S4** and **S7** support multiple dispatch generics, in which the method called depends on 1 or more arguments.
+:::
+
+#### Inheritance
+
+Inheritance is the concept that objects can "inherit" behaviors that have already been defined by other classes. In S3, methods will dispatch on the first class that has a method available. Lets define a new class `"bar"` that inherits from `"foo"`
+
+```{r}
+obj2 <- obj
+class(obj2) <- c("bar", "foo")
+obj2
+```
+
+All we did here was copy our original object, and add a new class. With this, we can see that the print method we defined for `"foo"` still works for our `"bar"` class because it inherits the `"foo"` class.
+
+Similarly we can define a method on `my_generic` for the `"bar"` class.
+
+```{r}
+my_generic.bar <- function(x) {
+  print("my_generic: bar method")
+}
+my_generic(obj)
+my_generic(obj2)
+```
+
+As seen above, `my_generic` dispatches to the **bar** method on `obj2` since in its class attribute, `"bar"` comes before `"foo"`.
+
+### S4
+
+S4 is a more complex framework. Class definitions are more formal and this framework supports multiple dispatch as well as multiple inheritance. You will see this class type more frequently with R packages hosted on [Bioconductor](https://www.bioconductor.org/) and may deal with objects built from this framework.
+
+We do not have the time to discuss the details of this class. Instead, please refer to the [Adanced R book documentation on **S4** classes](https://adv-r.hadley.nz/s4.html)
+
+### R6
+
+R6 is a less wildly used framework. Here, methods do not belong to generics, but live on the object itself.
+
+::: {.callout-note title="A note on 'copying' R6 objects and environments" collapse="true"}
+**R6** objects cannot be "copied" as you would a normal R object. R6 is built by environments and environments use **reference semantics**. This loosely means that any time we assign an environment to a new variable and then change something about the new variable, we are ultimately effecting both variables!
+
+```{r}
+env <- new.env()
+env$value <- "hello"
+# try to "copy"
+env2 <- env
+# change `value`
+env2$value <- "world"
+# check original
+env$value
+env2$value
+```
+
+This can be advantageous if you want only one copy of your data to exist through your code. If this is undesirable, don't worry, **R6** by default includes a `object$clone()` method that allows you to make a copy.
+:::
+
+For more specific details please refer to the [Advanced R book documentation on **R6** classes](https://adv-r.hadley.nz/r6.html)
+
+### S7
+
+**S7** is the newest class system in development with the aim of replacing **S3** and **S4**. It is not yet used by the community, but is a refreshing and consistent design pattern. For those who are interested in exploring, check out [the github](https://github.com/RConsortium/S7) or [their documentation](https://rconsortium.github.io/S7/)
