@@ -1,3 +1,15 @@
+---
+title: "General Programming Crash Course"
+subtitle: "Optional Class: Uncovered Concepts of h2l2c"
+author: "Justin Landis"
+---
+
+The goal of this document is to provide a brief overview of some topics that are pervasive in most programming languages. This will aim to give topical understanding of logical operators, `if` statements, loops, and classes.
+
+::: {.callout-important}
+For more formal and extensive details please see the [Advanced R Book](https://adv-r.hadley.nz/index.html).
+:::
+
 ## logical operators
 
 We have talked about the base types in Lectures 1 and 2. As a reminder:
@@ -111,7 +123,10 @@ The expression `x & (y | z)` will evaluate `y | z` before comparing `x` with its
 
 -   `which(x)` returns the indices of `x` that were `TRUE`
 
-## conditional execution
+-   `x %in% y` returns a logical vector the length of `x`, with `TRUE` values for indices that exist in `y` and `FLASE` otherwise
+
+
+## `if` statements
 
 Sometimes we want to execute code only when a certain condition is met. Here, we may have a result of some logical operators and then do something special.
 
