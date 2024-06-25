@@ -79,6 +79,8 @@ book:
         - examples/example-temperatures.qmd
         - examples/example-ebola.qmd
         - examples/example-avida.qmd
+    - "crash-course/crash-course.qmd"
+    
 
 
 
