@@ -261,6 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#ma-plot" id="toc-ma-plot" class="nav-link" data-scroll-target="#ma-plot">MA plot</a></li>
   <li><a href="#heatmap" id="toc-heatmap" class="nav-link" data-scroll-target="#heatmap">Heatmap</a></li>
+  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca">PCA</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -492,7 +493,7 @@ Challenge
 <section id="the-deseqdataset-dds" class="level3">
 <h3 class="anchored" data-anchor-id="the-deseqdataset-dds">The <strong>D</strong>ESeq<strong>D</strong>ata<strong>S</strong>et (dds)</h3>
 <p>Now that our data is ordered we are almost ready to use <code>DESeq2</code>. We should first recall what is the goal of our experimental analysis. <code>DESeq2</code> is intended to <strong>compare</strong> experimental conditions effect on transcription counts. Thus in doing so, we are required to specify our model <strong>design</strong> with <code>DESeq2</code>.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Model Designs in R">
+<div class="callout callout-style-default callout-note callout-titled" title="Model Designs in R">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -585,8 +586,18 @@ FBgn0261574  0.988142
 FBgn0261575  0.967914</code></pre>
 </div>
 </div>
-<div class="callout-success">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Congratulations! You have completed you first Differential Expression RNAseq Analysis!</p>
+</div>
 </div>
 </section>
 </section>
@@ -620,7 +631,7 @@ FBgn0261575 1.06836e+01     0.00791456 0.2009952  0.861705  0.967914</code></pre
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled" title="Challenge">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -629,7 +640,7 @@ Challenge
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>See if you can compare the LFG values between <code>res</code> and <code>res_shrink</code>. Are they smaller? larger? See if you can create a scatter plot between these two vectors.</p>
 <blockquote class="blockquote">
@@ -732,6 +743,43 @@ Significance Values
 <p><img src="deseq2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+</section>
+<section id="pca" class="level4">
+<h4 class="anchored" data-anchor-id="pca">PCA</h4>
+<p>Similarly we generally use transformed/scaled values for PCA as extremely large values will dominate the variance we may want to capture.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPCA</span>(dds_out_vst) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="deseq2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPCA</span>(dds_out_vst_sub) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="deseq2_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Note for PCA">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note for PCA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>PCA is very sensitive to the data provided. In other words, the resulting dimensions may change drastically</p>
 </div>
 </div>
 
