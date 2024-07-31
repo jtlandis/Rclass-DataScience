@@ -7,7 +7,7 @@ format: html
 This document takes examples from the [DESeq2 Vignette](https://www.bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html). This is by no means a comprehensive guide!
 :::
 
-## Workspace Setup
+# Workspace Setup
 
 If you have not yet installed `DESeq2`, please do so for this walk through. We will also be using data from [pasilla](https://bioconductor.org/packages/release/data/experiment/html/pasilla.html), which is a Drosophila dataset.
 
@@ -25,7 +25,7 @@ install.packages("tidyverse")
 ```
 
 
-## Data Import
+# Data Import
 
 We will start by finding the data packaged with the `pasilla` package. Accessing data within a package uses the `system.file()` function. If a package also contains a readable dataset from disk, it is conventionally, stored within a sub-directory of that package called `extdata/`. The `system.file()` function makes it easy to find these files.
 
@@ -59,7 +59,7 @@ coldata$condition <- factor(coldata$condition)
 coldata$type <- factor(coldata$type)
 ```
 
-### Data Inspection
+## Data Inspection
 
 As programmers, we must always be thinking about where our data comes from and how to structure the data. Browsing through BioConductor, we find the following information about the `pasilla` package.
 
@@ -81,7 +81,7 @@ coldata
 
 The data seems simple enough!
 
-#### The SummarizedExperiment Class
+### The SummarizedExperiment Class
 
 Before we continue, lets get an idea of the kind of data structure we will be working with. `DESeq2` objects extend a common data structure from BioConductor called a `SummarizedExperiment`. Below is the general structure of the object.
 
@@ -118,7 +118,7 @@ Consider our discussions on Logical Operators and `all()` or `any()`.
 Don't forget to check your help documentation!
 :::
 
-### The **D**ESeq**D**ata**S**et (dds)
+## The **D**ESeq**D**ata**S**et (dds)
 
 Now that our data is ordered we are almost ready to use `DESeq2`. We should first recall what is the goal of our experimental analysis. `DESeq2` is intended to **compare** experimental conditions effect on transcription counts. Thus in doing so, we are required to specify our model __design__ with `DESeq2`.
 
@@ -174,7 +174,7 @@ rowData(dds)$gene <- rownames(dds)
 dds
 ```
 
-#### The Most Important Commands
+### The Most Important Commands
 
 ```{r}
 dds_out <- DESeq(dds)
@@ -187,7 +187,7 @@ res
 Congratulations! You have completed you first Differential Expression RNAseq Analysis! 
 :::
 
-### LFC Shrinkage
+## LFC Shrinkage
 
 [Shrinkage](https://en.wikipedia.org/wiki/Shrinkage_(statistics)) in the world of statistics generally means to reduce variance in our parameter estimations. The Log Fold Change we calculate between these two groups are based on sample sizes 3 and 4 for 14,000 different Genes. This isn't too many samples to get a sense of the underlying distribution. Thus shrinkage will help reduce variation in samples that may be large by pure chance.
 
@@ -208,9 +208,9 @@ See if you can create a scatter plot between these two vectors.
 
 :::
 
-### Plotting
+## Plotting
 
-#### MA plot
+### MA plot
 
 ```{r}
 # alpha is set to 0.1 by default
@@ -228,7 +228,7 @@ We will not cover theory on power estimations for reasonable `alpha` thresholds.
 :::
 
 
-##### Saving output
+#### Saving output
 
 Lets assume that we settled on a `alpha` threshold of `0.0001` for this data and we intend to use the shrunk results. Lets subset this data and write that to disk!
 
@@ -244,7 +244,7 @@ res_subset <- res_shrink %>%
 write.csv(res_subset, "deseq2-sig-results.csv")
 ```
 
-#### Heatmap
+### Heatmap
 
 ```{r}
 library(pheatmap)
@@ -273,7 +273,7 @@ pheatmap::pheatmap(assay(dds_sub, "log"), cluster_rows = TRUE,
          )
 ```
 
-#### PCA
+### PCA
 
 Similarly we generally use transformed/scaled values for PCA as extremely large values will dominate the variance we may want to capture.
 
