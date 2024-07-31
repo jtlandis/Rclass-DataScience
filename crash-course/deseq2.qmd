@@ -59,6 +59,14 @@ coldata$condition <- factor(coldata$condition)
 coldata$type <- factor(coldata$type)
 ```
 
+::: {.callout-warning title="Challenge" collapse="true"}
+Call back to our first few classes on how to inspect class and types of objects. Use these functions on the columns coerced to "factors". 
+
+See if you can form your own opinions on what the "factor" class is internally and what the "levels" attribute means.
+
+> Useful functions are `type()` and `attributes()`
+:::
+
 ## Data Inspection
 
 As programmers, we must always be thinking about where our data comes from and how to structure the data. Browsing through BioConductor, we find the following information about the `pasilla` package.
