@@ -428,6 +428,7 @@ untreated4fb untreated  paired-end</code></pre>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This convention is different from that of the <code>tidyverse</code> whose functions tend to operate on <code>data.frame</code> objects. The <code>SummarizedExperiment</code> object is a compressed form of data.</p>
+<p>The <code>SummarizedExperiment</code> class has several “helper” functions to access data: <code>assay()</code>, <code>colData()</code>, <code>rowData()</code></p>
 </div>
 </div>
 </div>
@@ -495,9 +496,22 @@ Challenge
 </section>
 <section id="the-deseqdataset-dds" class="level2">
 <h2 class="anchored" data-anchor-id="the-deseqdataset-dds">The <strong>D</strong>ESeq<strong>D</strong>ata<strong>S</strong>et (dds)</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Raw Counts">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Raw Counts
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A DESeq Data Set requires “raw counts” as input. This means that they should not be normalized or transformed in any way. Generating a dds object with non-integer values should result in an error!</p>
+</div>
+</div>
 <p>Now that our data is ordered we are almost ready to use <code>DESeq2</code>. We should first recall what is the goal of our experimental analysis. <code>DESeq2</code> is intended to <strong>compare</strong> experimental conditions effect on transcription counts. Thus in doing so, we are required to specify our model <strong>design</strong> with <code>DESeq2</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Model Designs in R">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -506,7 +520,7 @@ Model Designs in R
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>R represents modeling with <code>~</code>. You may see this in the following forms:</p>
 <ul>
@@ -644,7 +658,7 @@ FBgn0261575 1.06836e+01     0.00791456 0.2009952  0.861705  0.967914</code></pre
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled" title="Challenge">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -653,7 +667,7 @@ Challenge
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>See if you can compare the LFG values between <code>res</code> and <code>res_shrink</code>. Are they smaller? larger? See if you can create a scatter plot between these two vectors.</p>
 <blockquote class="blockquote">
