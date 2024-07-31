@@ -1,5 +1,5 @@
 ---
-title: deseq2
+title: DESeq2
 format: html
 ---
 
@@ -129,11 +129,34 @@ R represents modeling with `~`. You may see this in the following forms:
 - `  ~ x`
 
 The style used generally depends on the function.
+
+The right hand side can contain multiple co-variates and would look something like: `y ~ x + z`
 :::
 
+:::: {.columns}
+
+::: {.column width="50%"}
 ```{r}
+#| eval: false
 count(coldata, condition)
 ```
+:::
+
+::: {.column width="15%"}
+<!-- column spacing-->
+:::
+
+::: {.column width="35%"}
+```{r}
+#| echo: false
+count(coldata, condition)
+```
+:::
+
+
+
+
+::::
 
 ```{r}
 coldata$condition <- factor(
@@ -142,7 +165,7 @@ coldata$condition <- factor(
 dds <- DESeqDataSetFromMatrix(
   countData = cts,
   colData = coldata,
-  design = ~ condition # indicating we are testing between
+  design = ~ condition 
 )
 
 # not necessary, just to put something here
