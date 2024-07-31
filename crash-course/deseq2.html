@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>deseq2 – How To Learn to Code : R for Data Science</title>
+<title>DESeq2 – How To Learn to Code : R for Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -138,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../crash-course/deseq2.html"><span class="chapter-title">deseq2</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../crash-course/deseq2.html"><span class="chapter-title">DESeq2</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../crash-course/deseq2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">deseq2</span></a>
+  <a href="../crash-course/deseq2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">DESeq2</span></a>
   </div>
 </li>
       </ul>
@@ -270,9 +270,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../crash-course/deseq2.html"><span class="chapter-title">deseq2</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class8.html">Practicing on Real-World Data</a></li><li class="breadcrumb-item"><a href="../crash-course/deseq2.html"><span class="chapter-title">DESeq2</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">deseq2</span></h1>
+<h1 class="title"><span class="chapter-title">DESeq2</span></h1>
 </div>
 
 
@@ -511,15 +511,25 @@ Model Designs in R
 <li><code>~ x</code></li>
 </ul>
 <p>The style used generally depends on the function.</p>
+<p>The right hand side can contain multiple co-variates and would look something like: <code>y ~ x + z</code></p>
 </div>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(coldata, condition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:15%;">
+<!-- column spacing-->
+</div><div class="column" style="width:35%;">
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  condition n
 1   treated 3
 2 untreated 4</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="cell">
@@ -529,7 +539,7 @@ Model Designs in R
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">countData =</span> cts,</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">colData =</span> coldata,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">design =</span> <span class="sc">~</span> condition <span class="co"># indicating we are testing between</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">design =</span> <span class="sc">~</span> condition </span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># not necessary, just to put something here</span></span>
@@ -660,7 +670,7 @@ Challenge
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="deseq2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="deseq2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -668,7 +678,7 @@ Challenge
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="deseq2_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="deseq2_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -676,7 +686,7 @@ Challenge
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="deseq2_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="deseq2_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -724,7 +734,7 @@ Significance Values
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="deseq2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="deseq2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -740,7 +750,7 @@ Significance Values
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="deseq2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="deseq2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -755,7 +765,7 @@ Significance Values
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="deseq2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="deseq2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -764,7 +774,7 @@ Significance Values
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="deseq2_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="deseq2_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
