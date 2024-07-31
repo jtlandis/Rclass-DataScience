@@ -89,6 +89,8 @@ Before we continue, lets get an idea of the kind of data structure we will be wo
 
 ::: {.callout-note collapse="true" title="`tidyverse` vs `BioConductor`"}
 This convention is different from that of the `tidyverse` whose functions tend to operate on `data.frame` objects. The `SummarizedExperiment` object is a compressed form of data. 
+
+The `SummarizedExperiment` class has several "helper" functions to access data: `assay()`, `colData()`, `rowData()`
 :::
 
 ```{r}
@@ -119,6 +121,10 @@ Don't forget to check your help documentation!
 :::
 
 ## The **D**ESeq**D**ata**S**et (dds)
+
+::: {.callout-note title="Raw Counts"}
+A DESeq Data Set requires "raw counts" as input. This means that they should not be normalized or transformed in any way. Generating a dds object with non-integer values should result in an error!
+:::
 
 Now that our data is ordered we are almost ready to use `DESeq2`. We should first recall what is the goal of our experimental analysis. `DESeq2` is intended to **compare** experimental conditions effect on transcription counts. Thus in doing so, we are required to specify our model __design__ with `DESeq2`.
 
