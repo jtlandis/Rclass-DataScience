@@ -122,7 +122,7 @@ Don't forget to check your help documentation!
 
 Now that our data is ordered we are almost ready to use `DESeq2`. We should first recall what is the goal of our experimental analysis. `DESeq2` is intended to **compare** experimental conditions effect on transcription counts. Thus in doing so, we are required to specify our model __design__ with `DESeq2`.
 
-::: {.callout-tip collapse="true" title="Model Designs in R"}
+::: {.callout-note collapse="true" title="Model Designs in R"}
 R represents modeling with `~`. You may see this in the following forms:
 
 - `y ~ x`
@@ -160,7 +160,7 @@ res <- results(dds_out)
 res
 ```
 
-::: callout-success
+::: callout-tip
 Congratulations! You have completed you first Differential Expression RNAseq Analysis! 
 :::
 
@@ -250,3 +250,18 @@ pheatmap::pheatmap(assay(dds_sub, "log"), cluster_rows = TRUE,
          )
 ```
 
+#### PCA
+
+Similarly we generally use transformed/scaled values for PCA as extremely large values will dominate the variance we may want to capture.
+
+```{r}
+plotPCA(dds_out_vst) +
+  theme_classic()
+
+plotPCA(dds_out_vst_sub) +
+  theme_classic()
+```
+
+::: {.callout-note title="Note for PCA"}
+PCA is very sensitive to the data provided. In other words, the resulting dimensions may change drastically 
+:::
