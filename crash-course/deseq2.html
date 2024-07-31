@@ -339,6 +339,26 @@ Note
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>coldata<span class="sc">$</span>condition <span class="ot">&lt;-</span> <span class="fu">factor</span>(coldata<span class="sc">$</span>condition)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>coldata<span class="sc">$</span>type <span class="ot">&lt;-</span> <span class="fu">factor</span>(coldata<span class="sc">$</span>type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Challenge">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Call back to our first few classes on how to inspect class and types of objects. Use these functions on the columns coerced to “factors”.</p>
+<p>See if you can form your own opinions on what the “factor” class is internally and what the “levels” attribute means.</p>
+<blockquote class="blockquote">
+<p>Useful functions are <code>type()</code> and <code>attributes()</code></p>
+</blockquote>
+</div>
+</div>
+</div>
 <section id="data-inspection" class="level2">
 <h2 class="anchored" data-anchor-id="data-inspection">Data Inspection</h2>
 <p>As programmers, we must always be thinking about where our data comes from and how to structure the data. Browsing through BioConductor, we find the following information about the <code>pasilla</code> package.</p>
@@ -347,7 +367,7 @@ Note
 </blockquote>
 <p>So lets inspect the data and see if this makes sense!</p>
 <div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -356,7 +376,7 @@ Important
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The data we loaded has already been processed from the instrument output. Loosely speaking, we are working on the <strong>downstream</strong> portion of our analysis pipeline.</p>
 <p>If you have raw sequencing files (<code>.bam/.fastq/.h5</code>), you may still need to process these files into “raw counts” or whatever <strong>downstream</strong> data output that R can handle for analysis.</p>
@@ -416,7 +436,7 @@ untreated4fb untreated  paired-end</code></pre>
 </figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="`tidyverse` vs `BioConductor`">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -425,7 +445,7 @@ untreated4fb untreated  paired-end</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This convention is different from that of the <code>tidyverse</code> whose functions tend to operate on <code>data.frame</code> objects. The <code>SummarizedExperiment</code> object is a compressed form of data.</p>
 <p>The <code>SummarizedExperiment</code> class has several “helper” functions to access data: <code>assay()</code>, <code>colData()</code>, <code>rowData()</code></p>
@@ -477,7 +497,7 @@ Important
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled" title="Challenge">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -486,7 +506,7 @@ Challenge
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We rearranged our data so that we could gaurentee that they would be in the correct order. We “verified” this visually. <strong>Can you write up a way to check that the two name vectors are in order, without visually checking?</strong> Consider our discussions on Logical Operators and <code>all()</code> or <code>any()</code>. Don’t forget to check your help documentation!</p>
 </div>
@@ -511,7 +531,7 @@ Raw Counts
 </div>
 <p>Now that our data is ordered we are almost ready to use <code>DESeq2</code>. We should first recall what is the goal of our experimental analysis. <code>DESeq2</code> is intended to <strong>compare</strong> experimental conditions effect on transcription counts. Thus in doing so, we are required to specify our model <strong>design</strong> with <code>DESeq2</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Model Designs in R">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -520,7 +540,7 @@ Model Designs in R
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>R represents modeling with <code>~</code>. You may see this in the following forms:</p>
 <ul>
@@ -658,7 +678,7 @@ FBgn0261575 1.06836e+01     0.00791456 0.2009952  0.861705  0.967914</code></pre
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled" title="Challenge">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -667,7 +687,7 @@ Challenge
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>See if you can compare the LFG values between <code>res</code> and <code>res_shrink</code>. Are they smaller? larger? See if you can create a scatter plot between these two vectors.</p>
 <blockquote class="blockquote">
